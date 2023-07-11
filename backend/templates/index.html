@@ -1,0 +1,162 @@
+<!-- <!DOCTYPE html> -->
+<!-- <html> -->
+<!---->
+<!-- <head> -->
+<!--   <title>Notes Management</title> -->
+<!-- </head> -->
+<!---->
+<!-- <body> -->
+<!--   <h1>Notes Management</h1> -->
+<!---->
+<!--   <h2>Existing Notes</h2> -->
+<!--   <ul> -->
+<!--     {% for category, topics in notes.items() %} -->
+<!--     <li><strong>{{ category }}</strong></li> -->
+<!--     <ul> -->
+<!--       {% for topic, notes_list in topics.items() %} -->
+<!--       <li>{{ topic }}</li> -->
+<!--       <ul> -->
+<!--         {% for note in notes_list %} -->
+<!--         <li>{{ note }}</li> -->
+<!--         {% endfor %} -->
+<!--       </ul> -->
+<!--       {% endfor %} -->
+<!--     </ul> -->
+<!--     {% endfor %} -->
+<!--   </ul> -->
+<!---->
+<!--   <h2>Add Note</h2> -->
+<!--   <form action="/notes/{{ category }}/{{ topic }}" method="POST"> -->
+<!--     <label for="category">Category:</label> -->
+<!--     <select name="category" id="category"> -->
+<!--       <option value="communication">Communication</option> -->
+<!--       <option value="finance">Finance</option> -->
+<!--       <option value="life">Life</option> -->
+<!--     </select><br><br> -->
+<!--     <label for="topic">Topic:</label> -->
+<!--     <input type="text" name="topic" id="topic"><br><br> -->
+<!--     <label for="note">Note:</label><br> -->
+<!--     <textarea name="note" id="note" rows="4" cols="50"></textarea><br><br> -->
+<!--     <input type="submit" value="Add Note"> -->
+<!--   </form> -->
+<!-- </body> -->
+<!---->
+<!-- </html> -->
+
+<!---->
+<!-- <!DOCTYPE html> -->
+<!-- <html> -->
+<!---->
+<!-- <head> -->
+<!--   <title>Notes Management</title> -->
+<!-- </head> -->
+<!---->
+<!-- <body> -->
+<!--   <h1>Notes Management</h1> -->
+<!---->
+<!--   <h2>Existing Notes</h2> -->
+<!--   <ul> -->
+<!--     {% for category, topics in notes.items() %} -->
+<!--     <li><strong>{{ category }}</strong></li> -->
+<!--     <ul> -->
+<!--       {% for topic, notes_list in topics.items() %} -->
+<!--       <li>{{ topic }}</li> -->
+<!--       <ul> -->
+<!--         {% set index = 0 %} -->
+<!--         {% for note in notes_list %} -->
+<!--         <li>{{ note }}</li> -->
+<!--         <form action="/notes/{{ category }}/{{ topic }}/edit" method="POST"> -->
+<!--           <input type="hidden" name="index" value="{{ index }}"> -->
+<!--           <input type="text" name="note" value="{{ note }}"> -->
+<!--           <input type="submit" value="Edit"> -->
+<!--         </form> -->
+<!--         <form action="/notes/{{ category }}/{{ topic }}/delete" method="POST"> -->
+<!--           <input type="hidden" name="index" value="{{ index }}"> -->
+<!--           <input type="submit" value="Delete"> -->
+<!--         </form> -->
+<!--         {% set index = index + 1 %} -->
+<!--         {% endfor %} -->
+<!--       </ul> -->
+<!--       {% endfor %} -->
+<!--     </ul> -->
+<!--     {% endfor %} -->
+<!--   </ul> -->
+<!---->
+<!--   <h2>Add Note</h2> -->
+<!--   <form action="/notes" method="POST"> -->
+<!--     <label for="category">Category:</label> -->
+<!--     <select name="category" id="category"> -->
+<!--       {% for category in categories %} -->
+<!--       <option value="{{ category }}">{{ category }}</option> -->
+<!--       {% endfor %} -->
+<!--     </select><br><br> -->
+<!--     <label for="topic">Topic:</label> -->
+<!--     <input type="text" name="topic" id="topic"><br><br> -->
+<!--     <label for="note">Note:</label><br> -->
+<!--     <textarea name="note" id="note" rows="4" cols="50"></textarea><br><br> -->
+<!--     <input type="submit" value="Add Note"> -->
+<!--   </form> -->
+<!-- </body> -->
+<!---->
+<!-- </html> -->
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Notes Management</title>
+</head>
+
+<body>
+  <h1>Notes Management</h1>
+
+  <h2>Existing Notes</h2>
+
+  <h2>Add Note</h2>
+  <ul>
+    {% for category, topics in notes.items() %}
+    <li><strong>{{ category }}</strong></li>
+    <ul>
+      {% for topic, notes_list in topics.items() %}
+      <li>{{ topic }}</li>
+      <ul>
+        {% for index in range(notes_list|length - 1) %}
+        <li>
+          {{ notes_list[index] }}
+          <a href="/notes/{{ category }}/{{ topic }}/{{ index }}/edit">Edit</a>
+          <a href="/notes/{{ category }}/{{ topic }}/{{ index }}/delete">Delete</a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endfor %}
+    </ul>
+    {% endfor %}
+  </ul>
+  <h2>Add Note</h2>
+  <form action="/notes" method="POST">
+    <label for="category">Category:</label>
+    <select name="category" id="category">
+      <option value="communication">Communication</option>
+      <option value="finance">Finance</option>
+      <option value="life">Life</option>
+    </select><br><br>
+    <label for="topic">Topic:</label>
+    <input type="text" name="topic" id="topic"><br><br>
+    <label for="note">Note:</label><br>
+    <textarea name="note" id="note" rows="4" cols="50"></textarea><br><br>
+    <input type="submit" value="Add Note">
+  </form>
+
+  <script>
+    // Custom filter to mimic enumerate functionality
+    Vue.filter('my_enumerate', function (value, start) {
+      start = parseInt(start) || 0;
+      return value.map(function (item, index) {
+        return [index + start, item];
+      });
+    });
+  </script>
+</body>
+
+</html>

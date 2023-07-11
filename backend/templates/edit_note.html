@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Edit Note</title>
+</head>
+
+<body>
+  <h1>Edit Note</h1>
+
+  <h2>Category: {{ category }}</h2>
+  <h2>Topic: {{ topic }}</h2>
+  <h2>Index: {{ index }}</h2>
+
+  <h3>Current Note:</h3>
+  <p>{{ note }}</p>
+
+  <h3>Edit Note:</h3>
+  <form action="/notes/{{ category }}/{{ topic }}/{{ index }}/edit" method="POST">
+    <textarea name="new_note" rows="4" cols="50">{{ note }}</textarea><br><br>
+    <input type="submit" value="Save Changes">
+  </form>
+</body>
+
+</html>

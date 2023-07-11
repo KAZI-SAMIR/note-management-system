@@ -1,0 +1,26 @@
+{
+    "communication": {
+        "attracting": [],
+        "communicating": [],
+        "influencing": [],
+        "networking": [
+            "connecd between two giants and take charge",
+            "Building support system "
+        ]
+    },
+    "finance": {
+        "business": [],
+        "investment": [],
+        "money-management": [],
+        "startup": [],
+        "trading": []
+    },
+    "life": {
+        "growth": [
+            "always learning"
+        ],
+        "mindset": [],
+        "people-management": [],
+        "productivity": []
+    }
+}
