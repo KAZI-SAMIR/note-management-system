@@ -25,7 +25,7 @@ To install and run the system, follow these steps:
 
 1. Clone the repository to your local machine:
    ```
-   git clone https://github.com/your-username/note-management-system.git ↗(https://github.com/your-username/note-management-system.git)
+   git clone https://github.com/your-username/note-management-system
    ```
 2. Install the necessary dependencies for the Flask backend:
    ```
@@ -33,8 +33,9 @@ To install and run the system, follow these steps:
    pip install -r requirements.txt
    `````
 3. Start the Flask backend server:
+  (mycase name will be not same)
    ```
-   python app.py
+   python app.py 
    ````
 - install redis than run
    ```
@@ -42,21 +43,22 @@ To install and run the system, follow these steps:
    ```
    
 4. Install the necessary dependencies for the React frontend:
+   (mycase package json not exists do it yourself )
    ````
    cd ../frontend
    npm install
    ````
-5. Start the React frontend server:
+6. Start the React frontend server:
    ````
    npm start
    ````
-6. Open your web browser and navigate to `http://localhost:3000`
+7. Open your web browser and navigate to `http://localhost:3000`
 
 ## Usage
 
 To use the system, follow these steps:
 
-1. Create an account or login with an existing account
+1. Create an account or login with an existing account (working on it)
 2. Create a new note by clicking the "New Note" button
 3. Edit or delete a note by clicking on it and selecting the appropriate option
 4. Group notes into categories by clicking the "New Category" button and dragging notes into the category
